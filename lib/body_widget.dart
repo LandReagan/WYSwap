@@ -1,58 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:wy_swap/slot.dart';
+import 'package:wy_swap/database.dart';
 
-import 'database.dart';
 
 class BodyWidget extends StatelessWidget {
 
-  final dummyData = <Slot>[
-    Slot(SLOT_TYPE.FIFTEEN, 1, 93429, 'Landry Gagne'),
-    Slot(SLOT_TYPE.FIFTEEN, 5, 99991, 'Dummy1'),
-    Slot(SLOT_TYPE.FIFTEEN, 7, 99992, 'Dummy2'),
-    Slot(SLOT_TYPE.FIFTEEN, 5, 99993, 'Dummy3'),
-    Slot(SLOT_TYPE.FIFTEEN, 3, 99994, 'Dummy4'),
-    Slot(SLOT_TYPE.FIFTEEN, 6, 99994, 'Dummy4'),
-
-    Slot(SLOT_TYPE.TWENTY, 1, 99991, 'Dummy1'),
-    Slot(SLOT_TYPE.TWENTY, 3, 99992, 'Dummy2'),
-    Slot(SLOT_TYPE.TWENTY, 4, 99993, 'Dummy3'),
-    Slot(SLOT_TYPE.TWENTY, 2, 99993, 'Dummy3'),
-    Slot(SLOT_TYPE.TWENTY, 2, 99994, 'Dummy4'),
-    Slot(SLOT_TYPE.TWENTY, 3, 99995, 'Dummy5'),
-  ];
-
   ListView _generate() {
 
-    Database.test();
+    Database.fetchAllUsersAndTrades();
 
     var tiles = <ListTile>[];
-
-    var staffNumbers = <int>[];
-    for (Slot slot in dummyData) {
-      if (!staffNumbers.contains(slot.staffNumber)) {
-        staffNumbers.add(slot.staffNumber);
-      }
-    }
-
-    for (int staffNumber in staffNumbers) {
-      // 1. Add the name and Staff number
-      tiles.add(
-        ListTile(
-          title: Text(staffNumber.toString(), textScaleFactor: 1.5,),
-        )
-      );
-      for (Slot slot in dummyData) {
-        if (slot.staffNumber == staffNumber) {
-          tiles.add(
-            ListTile(
-              leading: slot.type == SLOT_TYPE.TWENTY ? TwentySlot() : FifteenSlot(),
-              title: Text("#" + slot.number.toString(), textScaleFactor: 1.5,),
-            )
-          );
-        }
-      }
-    }
 
     return ListView.builder(
         itemCount: tiles.length,

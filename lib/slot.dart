@@ -1,13 +1,14 @@
-enum SLOT_TYPE { FIFTEEN, TWENTY }
+import 'package:wy_swap/globals.dart';
 
 class Slot {
+
   final SLOT_TYPE type;
   final int number;
-  final staffNumber;
-  final staffName;
+  final FLEET fleet;
+  final RANK rank;
 
   DateTime get startDate => null;
   DateTime get endDate => null;
 
-  Slot(this.type, this.number, this.staffNumber, this.staffName);
+  Slot(this.type, this.number, this.fleet, this.rank);
 }
