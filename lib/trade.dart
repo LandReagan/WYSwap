@@ -7,4 +7,11 @@ class Trade {
   final Slot giving;
 
   Trade(this.user, this.requesting, this.giving);
+
+  @override
+  String toString() {
+    return user.toString() +
+        '\n    requesting: ' + requesting.toString() +
+        '\n    giving:     ' + giving.toString();
+  }
 }

@@ -1,14 +1,20 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:wy_swap/slot.dart';
 import 'package:wy_swap/database.dart';
 
 
 class BodyWidget extends StatelessWidget {
 
+  void testDatabase() async {
+    var trades = await Database.fetchAllUsersAndTrades();
+
+    for (var trade in trades) {
+      print(trade);
+    }
+}
+
   ListView _generate() {
 
-    Database.fetchAllUsersAndTrades();
+    testDatabase();
 
     var tiles = <ListTile>[];
 

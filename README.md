@@ -16,7 +16,7 @@ users COLL
         |
         +- (uid) DOC
             |
-            +- giving_slot_number INT
+            +- giving INT
             +- slot_days INT
-            +- requesting_slot_number
+            +- requesting
 </pre>

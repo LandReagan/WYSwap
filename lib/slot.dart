@@ -11,4 +11,10 @@ class Slot {
   DateTime get endDate => null;
 
   Slot(this.type, this.number, this.fleet, this.rank);
+
+  @override
+  String toString() {
+    return type.toString() + ' #' + number.toString() + ' fleet:' +
+        fleet.toString() + ' rank:' + rank.toString();
+  }
 }
